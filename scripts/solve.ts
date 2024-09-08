@@ -34,15 +34,21 @@ const [two, twoPerformance] = withPerformance(() =>
   )
 )
 
+const oneResult = one ? await one : null
+const twoResult = two ? await two : null
 console.log(
   '🌲',
   'Part One:',
-  chalk.green(one ? await one : '—'),
-  one ? `(${formatPerformance(onePerformance)})` : ''
+  chalk.green(oneResult ?? '—'),
+  oneResult ? `(${formatPerformance(onePerformance)})` : ''
 )
 console.log(
   '🎄',
   'Part Two:',
-  chalk.green(two ? await two : '—'),
-  two ? `(${formatPerformance(twoPerformance)})` : ''
+  chalk.green(twoResult ?? '—'),
+  twoResult ? `(${formatPerformance(twoPerformance)})` : ''
 )
+
+if (oneResult && twoResult) {
+  // TODO: close
+}
